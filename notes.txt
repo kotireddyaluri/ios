@@ -1,0 +1,13 @@
+1. The below accessControl won't ask for TouchID - .init() option
+SecAccessControl access = SecAccessControlCreateWithFlags(nil,
+                kSecAttrAccessibleWhenUnlockedThisDeviceOnly,
+                .init(), //.init() -- creates an empty option set with raw value of 0
+                &error)
+
+2. The below accessControl will be ask for TouchID
+SecAccessControl access = SecAccessControlCreateWithFlags(nil,
+                kSecAttrAccessibleWhenUnlockedThisDeviceOnly,
+                .biometryCurrentSet,
+                &error)
+
+3. 
